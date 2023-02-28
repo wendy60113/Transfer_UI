@@ -1,10 +1,10 @@
 <template>
-  <div class="bg">
+  <div class="bg" :style="{width:UI_Width+'%',height:UI_Width+'%'}">
     <div class="card_custom p-3">
         <div class="title">
             <b-form-input v-model="nameA" class="input">{{nameA}}</b-form-input>
         </div>
-        <div class="card_line px-3">
+        <div class="card_line px-3" :style="{paddingBottom:UI_Width/10+2+'%'}">
             <div class="checkBox_Box">
                 <div v-for="(item,indx) in list" :key="'Y'+indx" class="my-3">
                     <CheckBox
@@ -14,7 +14,7 @@
                     />
                 </div>
             </div>
-            <div class="add_box pt-3">
+            <div class="add_box">
                 <b-input-group>
                     <b-form-input v-model="tag"></b-form-input>
                     <b-input-group-append class="add_box_back" >
@@ -56,6 +56,7 @@
 <script>
 import CheckBox from '@/components/CheckBox.vue'
 export default {
+    props:['UI_Width'],
     data:()=>({
         list:[
             // {'name':'List1','type':'list','idx':0,'checked':false}
@@ -149,23 +150,25 @@ export default {
     flex-direction:row;
     justify-content:center;
     align-items: center;
-    height: 100%;
     text-align: center;
+    width: 80%;
 
 }
 .card_custom{
-    width: 20%;
-    height: 400px;
+    position: relative;
+    width: 40%;
+    height: 100%;
     background-color: #fff;
     box-shadow: 4px 4px 20px 8px rgba(213, 213, 213, 0.1);
     border-radius: 2%;
 
     .title{
+        height: 10%;
         .input{
             border: 0;
             text-align: center;
 
-            height: 15%;
+            height: 100%;
             font-weight: 300;
             font-size: 1.5rem;
             color: #333;
@@ -180,17 +183,23 @@ export default {
     .card_line{
         border: 1px solid #E8E8E8;
         border-radius: 2%;
-        height: 85%;
-        min-height: 200px;
-        padding-bottom: 10%;
+        height: 90%;
+        // padding-bottom: 10%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
 
         .checkBox_Box{
             overflow:scroll;
-            height: 82%;
+            height: 85%;
+            width: 100%;
         }
 
         .add_box{
-            height: 18%;
+            width: 100%;
+            height: 10%;
+            
             // border: 1px solid #E8E8E8;
 
             .form-control{
@@ -242,11 +251,17 @@ export default {
 @media(max-width: 768px){
     .bg{
         flex-direction:column;
+        width: 80% !important;
+        height:80% !important;
     }
     .card_custom{
-        width: 60%;
+        width: 100%;
+        .title{
+            height: 20%;
+        }
         .card_line{
-            padding-bottom: 20%;
+            height: 80%;
+            padding-bottom: 10%;
         }
     }
     

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MainApp/>
+    <MainApp :UI_Width="50"/>
   </div>
 </template>
 
@@ -23,5 +23,9 @@ body{
   background-color: #fafafa;
   height: 100vh;
   width: 100vw;
+
+  display: flex;
+  justify-content: center;    
+  align-items: center; 
 }
 </style>
